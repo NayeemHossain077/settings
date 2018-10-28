@@ -1,13 +1,13 @@
 {
-  "name": "kodeeo/settings",
-  "description": "Kodeeo Settings is persistent settings in laravel",
+  "name": "llcbd/settings",
+  "description": "Easy Persistent Settings Management for Laravel",
   "type": "package",
   "keywords": [
     "settings",
     "laravel",
     "lumen"
   ],
-  "homepage": "http://kodeeo.com",
+  "homepage": "http://www.letslearncoding.co",
   "require-dev": {
     "graham-campbell/testbench": "^3.3",
     "phpunit/phpunit": "^5.0"
@@ -15,17 +15,17 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Kodeeo",
-      "email": "info@kodeeo.com"
+      "name": "Lets Learn Coding",
+      "email": "hello@letslearncoding.co"
     },
     {
-      "name": "Shipu Ahamed",
-      "email": "shipu@kodeeo.com"
+      "name": "Muhammad Sumon Molla Selim",
+      "email": "sumon@letslearncoding.co"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Kodeeo\\Settings\\": "src/"
+      "Llcbd\\Settings\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -33,13 +33,13 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Kodeeo\\Settings\\Tests\\": "tests/"
+      "Llcbd\\Settings\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Kodeeo\\Settings\\Providers\\SettingsServiceProvider"
+        "Llcbd\\Settings\\Providers\\SettingsServiceProvider"
       ]
     }
   },
