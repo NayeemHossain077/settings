@@ -22,13 +22,13 @@ trait GetSettings
                 if (is_array($attribute)) {
                     $attribute = json_encode($attribute);
                 }
-                static::updateOrInsert([config('kodeeo-settings.keyColumn') => $key], [config('kodeeo-settings.valueColumn') => $attribute])->get();
+                static::updateOrInsert([config('llcbd-settings.keyColumn') => $key], [config('llcbd-settings.valueColumn') => $attribute])->get();
             }
         } else {
             if (is_array($value)) {
                 $value = json_encode($value);
             }
-            static::updateOrInsert([config('kodeeo-settings.keyColumn') => $attributes], [config('kodeeo-settings.valueColumn') => $value])->get();
+            static::updateOrInsert([config('llcbd-settings.keyColumn') => $attributes], [config('llcbd-settings.valueColumn') => $value])->get();
         }
     }
 
@@ -55,9 +55,9 @@ trait GetSettings
     {
         self::cacheForget();
         if (is_array($keys)) {
-            $setting = static::whereIn(config('kodeeo-settings.keyColumn'), $keys)->delete();
+            $setting = static::whereIn(config('llcbd-settings.keyColumn'), $keys)->delete();
         } else {
-            $setting = static::where(config('kodeeo-settings.keyColumn'), $keys)->delete();
+            $setting = static::where(config('llcbd-settings.keyColumn'), $keys)->delete();
         }
 
         return $setting;
@@ -77,14 +77,14 @@ trait GetSettings
         if (is_array($keys)) {
             $hasSettings = [];
             foreach ($keys as $key) {
-                $hasSettings[$key] = (! is_null($settings[$key]) || is_array($settings[$key])) ? true : false;
+                $hasSettings[$key] = ($settings[$key] !== null || is_array($settings[$key]));
             }
 
             return collect($hasSettings);
-        } else {
-            if (! is_null($settings)) {
-                return true;
-            }
+        }
+
+        if ($settings !== null) {
+            return true;
         }
 
         return false;
@@ -129,14 +129,14 @@ trait GetSettings
         $setting = self::getAll();
 
         if (! isset($setting[$explode[0]])) {
-            if (! is_null($keys)) {
+            if ($keys !== null) {
                 $setting = $default;
             }
         } else {
             $setting = $setting[$explode[0]];
         }
 
-        if (count($explode) > 1 && ! is_null($setting)) {
+        if ($setting !== null && count($explode) > 1) {
             unset($explode[0]);
             foreach ($explode as $element) {
                 if (isset($setting[$element])) {

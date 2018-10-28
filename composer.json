@@ -8,6 +8,9 @@
     "lumen"
   ],
   "homepage": "http://www.letslearncoding.co",
+  "require": {
+    "ext-json": "*"
+  },
   "require-dev": {
     "graham-campbell/testbench": "^3.3",
     "phpunit/phpunit": "^5.0"
