@@ -43,6 +43,6 @@
       ]
     }
   },
-  "minimum-stability": "master",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
